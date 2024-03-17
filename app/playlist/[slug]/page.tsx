@@ -1,17 +1,33 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import Header from "@/components/Header";
 import Image from "next/image";
-import LikedContent from "./components/LikedContent";
-import useSong from "@/hooks/useSong";
+import usePlaylist from "@/hooks/usePlaylist";
+import { useCallback, useEffect } from "react";
+import { apiListPlaylist } from "@/services/playlist";
+import useAuth from "@/hooks/useAuth";
+import PlaylistContent from "./components/PlaylistContent";
 
 export const revalidate = 0;
 
-const Liked = () => {
-  const song = useSong((state) => state.song);
-  const likedSong = useSong((state) => state.likedSong);
+const Liked = ({ params }: { params: { slug: string } }) => {
+  const playlists = usePlaylist((state) => state.playlist);
+  const setPlaylist = usePlaylist((state) => state.setPlaylist);
+  const isLogin = useAuth((state) => state.isLogin);
 
-  const songs = song.filter((obj: any) => likedSong.includes(obj.id));
+  const playlist = playlists.find((e: any) => e.id == params.slug);
+
+  const getPlaylist = useCallback(async () => {
+    const data = await apiListPlaylist();
+    setPlaylist(data.data);
+  }, [apiListPlaylist]);
+
+  useEffect(() => {
+    if (isLogin) {
+      getPlaylist();
+    }
+  }, [isLogin]);
 
   return (
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
@@ -32,14 +48,14 @@ const Liked = () => {
                   Playlist
                 </p>
                 <h1 className="text-white text-4xl sm:text-5xl lg:text-7xl font-bold">
-                  Like songs!
+                  {playlist ? playlist.playlist_name : ""}
                 </h1>
               </div>
             </div>
           </div>
         </div>
       </Header>
-      <LikedContent songs={songs} isLoading />
+      {playlist ? <PlaylistContent songs={playlist.songs} /> : <></>}
     </div>
   );
 };

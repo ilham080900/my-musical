@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import VideoContent from "./components/VideoContent";
 import SearchInput from "@/components/SearchInput";
 import Image from "next/image";
+import PlayMenu from "@/components/PlayMenu";
 
 export const revalidate = 0;
 
@@ -15,17 +16,7 @@ const Video = () => {
       </Header>
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-4">
         <div className="relative flex flex-col md:flex gap-y-2 gap-x-4 w-[930px] p-8">
-          <div className="justify-center flex flex-row gap-y-4 py-1 px-2 items-center text-center bg-neutral-800 rounded-md">
-            <button className="flex flex-row justify-between bg-neutral-700 text-white text-center px-5 py-2 m-4 rounded-full hover:bg-neutral-500">
-              <p>Musik</p>
-            </button>
-            <button className="flex flex-row justify-between bg-neutral-700 text-white text-center px-5 py-2 m-4 rounded-full hover:bg-neutral-500">
-              <p>Video</p>
-            </button>
-            <button className="flex flex-row justify-between bg-neutral-700 text-white text-center px-5 py-2 m-4 rounded-full hover:bg-neutral-500">
-              <p>Chord</p>
-            </button>
-          </div>
+          <PlayMenu />
           <div className="flex justify-center items-center overflow-y-auto pt-2 bg-neutral-800 h-[475px] rounded-md">
             <div className="relative h-[400px] w-[400px] overflow-hidden py-2 px-2">
               <Image

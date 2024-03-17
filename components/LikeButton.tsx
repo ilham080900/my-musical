@@ -1,35 +1,28 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import useAuthModal from "@/hooks/UseAuthModal";
+import useSong from "@/hooks/useSong";
 import { useEffect, useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 interface LikeButtonProps {
-  songId: string;
+  songId: number;
 }
 
 const LikeButton: React.FC<LikeButtonProps> = ({ songId }) => {
-  const router = useRouter();
+  const likedSong = useSong((state) => state.likedSong);
+  const addLikedSong = useSong((state) => state.addLikedSong);
+  const removeLikedSong = useSong((state) => state.removeLikedSong);
 
-  const authModal = useAuthModal();
-
-  const [isLiked, setIsLiked] = useState(false);
-
-  useEffect(() => {
-    if (!songId) {
-      return;
-    }
-  }, [songId]);
-
+  const isLiked = likedSong.includes(songId);
   const Icon = isLiked ? AiFillHeart : AiOutlineHeart;
 
   const handleLike = () => {
-    if (!authModal.isOpen) {
-      return authModal.onOpen();
+    console.log(songId);
+    if (isLiked) {
+      removeLikedSong(songId);
+    } else {
+      addLikedSong(songId);
     }
-
-    router.refresh();
   };
 
   return (

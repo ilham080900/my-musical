@@ -1,13 +1,28 @@
-import Image from "next/image";
+"use client";
+
 import Header from "@/components/Header";
 import ListItem from "@/components/ListItem";
 
 import PageContent from "./components/PageContent";
-import SongItem from "@/components/SongItem";
+import { useCallback, useEffect } from "react";
+import { apiListSong } from "@/services/song";
+import useSong from "@/hooks/useSong";
 
 export const revalidate = 0;
 
 export default function Home() {
+  const setSong = useSong((state) => state.setSong);
+  const song = useSong((state) => state.song);
+
+  const getSong = useCallback(async () => {
+    const data = await apiListSong();
+    setSong(data.data);
+  }, [setSong]);
+
+  useEffect(() => {
+    getSong();
+  }, [getSong]);
+
   return (
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
       <Header className="mb-2">
@@ -26,7 +41,7 @@ export default function Home() {
         <div className="flex justify-between items-center">
           <h1 className="text-white text-2xl font-semibold">Newest Songs </h1>
         </div>
-        <PageContent songs={[]} />
+        <PageContent songs={song} />
       </div>
     </div>
   );

@@ -1,18 +1,61 @@
-import { useAuthModalLogin, useAuthModalRegister } from "@/hooks/UseAuthModal";
-import Link from "next/link";
-import { Input } from "postcss";
+/* eslint-disable react/no-unescaped-entities */
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useAuthModalLogin, useAuthModalRegister } from "@/hooks/useAuthModal";
+import { apiLogin } from "@/services/auth";
+import { LoginTypes, UserTypes } from "@/services/data-types";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import Cookies from "js-cookie";
+import useAuth from "@/hooks/useAuth";
+import { jwtDecode } from "jwt-decode";
 
 const Login = () => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const router = useRouter();
+
   const closeModalLogin = useAuthModalLogin((state) => state.onClose);
   const openModalRegister = useAuthModalRegister((state) => state.onOpen);
+  const setLogin = useAuth((state) => state.setLogin);
+  const setUser = useAuth((state) => state.setUser);
 
   const onClick = () => {
     closeModalLogin();
     openModalRegister();
   };
 
+  async function onLogin() {
+    if (!username && !password) {
+      return toast.error("Please fill all input");
+    }
+
+    const data: LoginTypes = {
+      username,
+      password,
+    };
+
+    const response = await apiLogin(data);
+
+    if (response.error) {
+      return toast.error(response.message);
+    }
+
+    toast.success("Login Success");
+    const token = response.data;
+    const payload: UserTypes = jwtDecode(token);
+    setUser(payload);
+    const tokenBase64 = btoa(token);
+    Cookies.set("token", tokenBase64, { expires: 1 });
+    setLogin(true);
+    closeModalLogin();
+    router.push("/");
+  }
+
   return (
-    <form action="flex justify-center items-center flex-col">
+    <>
       <div className="mb-4 pb-5">
         <label
           htmlFor="Username"
@@ -26,6 +69,8 @@ const Login = () => {
           type="text"
           placeholder="Username"
           name="username"
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
         />
       </div>
       <div className="mb-4 pb-5">
@@ -41,12 +86,14 @@ const Login = () => {
           type="password"
           placeholder="*******"
           name="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
         />
       </div>
       <div className="mb-4 pt-2">
         <button
           className="bg-green-500 w-full flex justify-center items-center text-white font-bold py-2 px-4 rounded hover:bg-green-700"
-          onClick={() => {}}
+          onClick={onLogin}
         >
           Login
         </button>
@@ -57,7 +104,7 @@ const Login = () => {
           Register
         </button>
       </p>
-    </form>
+    </>
   );
 };
 export default Login;

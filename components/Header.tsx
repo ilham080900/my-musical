@@ -1,6 +1,5 @@
 "use client";
 
-import Login from "./Login";
 import { useRouter } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
@@ -9,9 +8,11 @@ import { BiSearch } from "react-icons/bi";
 import { FaUserAlt } from "react-icons/fa";
 
 import Button from "./Button";
-import { useAuthModalLogin, useAuthModalRegister } from "@/hooks/UseAuthModal";
-import AuthModal from "./AuthModalLogin";
-import { Sign } from "crypto";
+import { useAuthModalLogin, useAuthModalRegister } from "@/hooks/useAuthModal";
+import useAuth from "@/hooks/useAuth";
+import { useEffect } from "react";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -23,11 +24,28 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
   const openModalLogin = useAuthModalLogin((state) => state.onOpen);
   const openModalRegister = useAuthModalRegister((state) => state.onOpen);
 
-  const Username = AuthModal();
+  const isLogin = useAuth((state) => state.isLogin);
+  const user = useAuth((state) => state.user);
+  const setLogin = useAuth((state) => state.setLogin);
+  const setUser = useAuth((state) => state.setUser);
 
   const handleLogout = () => {
-    router.refresh();
+    Cookies.remove("token");
+    setLogin(false);
+    router.push("/");
   };
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      const jwtToken = atob(token);
+      const payload = jwtDecode(jwtToken);
+      const user: any = payload;
+      setUser(user);
+      setLogin(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setLogin]);
 
   return (
     <div className={twMerge(`h-fit bg-gradient-to-b from-emerald-800 p-6`)}>
@@ -55,35 +73,33 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
           </button>
         </div>
         <div className="flex justify-between items-center gap-x-4">
-          {/* {Username ? (
+          {isLogin ? (
             <div className="flex gap-x-4 items-center">
-              <button onClick={handleLogout} className="bg-white px-6 py-2">
-                Logout
-              </button>
-              <button
-                onClick={() => router.push("/Profil")}
-                className="bg-white"
-              >
+              <p>{user.fullname}</p>
+              <button onClick={() => router.push("/profil")}>
                 <FaUserAlt />
               </button>
-            </div>
-          ) : ( */}
-          <>
-            <div>
-              <Button
-                onClick={openModalRegister}
-                className="bg-transparent text-neutral-300 font-medium"
-              >
-                Sign Up
+              <Button onClick={handleLogout} className="bg-white px-6 py-2">
+                Logout
               </Button>
             </div>
-            <div>
-              <Button onClick={openModalLogin} className="bg-white px-6 py-2">
-                Log in
-              </Button>
-            </div>
-          </>
-          {/* )} */}
+          ) : (
+            <>
+              <div>
+                <Button
+                  onClick={openModalRegister}
+                  className="bg-transparent text-neutral-300 font-medium"
+                >
+                  Sign Up
+                </Button>
+              </div>
+              <div>
+                <Button onClick={openModalLogin} className="bg-white px-6 py-2">
+                  Log in
+                </Button>
+              </div>
+            </>
+          )}
         </div>
       </div>
       {children}

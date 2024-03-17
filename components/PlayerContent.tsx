@@ -3,16 +3,18 @@
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import LikeButton from "./LikeButton";
 import MediaItem from "./MediaItem";
-import { AiFillStepBackward, AiFillStepForward } from "react-icons/ai";
+import {
+  AiFillStepBackward,
+  AiFillStepForward,
+  AiOutlinePlus,
+} from "react-icons/ai";
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
 import Slider from "./Slider";
 import usePlayer from "@/hooks/usePlayer";
-import { use, useState } from "react";
-import { useEffect } from "react";
+import { useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
-import play from "@/app/play/page";
-import { useRouter } from "next/router";
-import useAuthModal from "@/hooks/UseAuthModal";
+import useSongModal from "@/hooks/useSongModal";
+import { useRouter } from "next/navigation";
 
 interface PlayerContentProps {
   song?: [];
@@ -23,9 +25,13 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
   const player = usePlayer();
   const [volume, setVolume] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
+  const router = useRouter();
 
   const Icon = isPlaying ? BsPauseFill : BsPlayFill;
   const VolumeIcon = volume === 0 ? HiSpeakerXMark : HiSpeakerWave;
+
+  const playSong = usePlayer((state) => state.song);
+  const openModal = useSongModal((state) => state.onOpen);
 
   // const onPlayNext = () => {
   //   if (player.ids.length === 0) {
@@ -96,8 +102,8 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
     <div className="grid grid-cols-2 md:grid-cols-3 h-full">
       <div className="flex w-full justify-start">
         <div className="flex items-center gap-x-4">
-          <MediaItem data={song} />
-          <LikeButton songId={""} />
+          <MediaItem data={playSong} />
+          {playSong.song_name ? <LikeButton songId={playSong.id} /> : <></>}
         </div>
       </div>
       <div className="flex md:hidden col-auto w-full justify-end items-center">
@@ -127,14 +133,29 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ song, songUrl }) => {
         />
       </div>
       <div className="hidden md:flex w-full justify-end pr-2">
+        {playSong.song_name ? (
+          <button>
+            <AiOutlinePlus
+              onClick={() => openModal()}
+              size={20}
+              className="text-neutral-400 cursor-pointer hover:text-white transition"
+            />
+          </button>
+        ) : (
+          <></>
+        )}
         <div className="flex items-center gap-x-2 w-[120px]">
-          <VolumeIcon onClick={() => {}} size={34} className="cursor-pointer" />
+          <VolumeIcon
+            onClick={() => {}}
+            size={34}
+            className="mx-5 cursor-pointer"
+          />
           <Slider value={volume} onChange={(value) => value} />
         </div>
         <div className="flex items-center gap-x-2 w-[50px] ps-3">
           <button>
             <IoIosArrowUp
-              onClick={play}
+              onClick={() => router.push("/play")}
               size={30}
               className="cursor-pointer text-white"
             />
