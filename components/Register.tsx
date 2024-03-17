@@ -1,8 +1,15 @@
-import { useAuthModalRegister, useAuthModalLogin } from "@/hooks/UseAuthModal";
-import Link from "next/link";
-import { Input } from "postcss";
+import { useAuthModalRegister, useAuthModalLogin } from "@/hooks/useAuthModal";
+import { apiRegister } from "@/services/auth";
+import { RegisterTypes } from "@/services/data-types";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Register = () => {
+  const [fullname, setFullname] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
+
   const closeModalRegister = useAuthModalRegister((state) => state.onClose);
   const openModalLogin = useAuthModalLogin((state) => state.onOpen);
 
@@ -11,8 +18,36 @@ const Register = () => {
     openModalLogin();
   };
 
+  async function onRegister() {
+    if (!username && !fullname && !password && !confirmPassword) {
+      return toast.error("Please fill all input");
+    }
+
+    if (password != confirmPassword) {
+      return toast.error("Password not match");
+    }
+
+    const data: RegisterTypes = {
+      username,
+      fullname,
+      password,
+      confirmPassword,
+    };
+
+    const response = await apiRegister(data);
+
+    if (response.error) {
+      return toast.error(response.message);
+    }
+
+    closeModalRegister();
+    openModalLogin();
+
+    return toast.success("Success Register new Account");
+  }
+
   return (
-    <form action="flex justify-center items-center flex-col">
+    <>
       <div className="mb-4 pb-5">
         <label
           htmlFor="Fullname"
@@ -26,6 +61,8 @@ const Register = () => {
           type="text"
           placeholder="Fullname"
           name="fullname"
+          value={fullname}
+          onChange={(event) => setFullname(event.target.value)}
         />
       </div>
       <div className="mb-4 pb-5">
@@ -41,6 +78,8 @@ const Register = () => {
           type="text"
           placeholder="Username"
           name="username"
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
         />
       </div>
       <div className="mb-4 pb-5">
@@ -56,6 +95,8 @@ const Register = () => {
           type="password"
           placeholder="*******"
           name="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
         />
       </div>
       <div className="mb-4 pb-5">
@@ -71,10 +112,15 @@ const Register = () => {
           type="password"
           placeholder="*******"
           name="confirmpassword"
+          value={confirmPassword}
+          onChange={(event) => setConfirmPassword(event.target.value)}
         />
       </div>
       <div className="mb-4 pt-2">
-        <button className="bg-green-500 w-full flex justify-center items-center text-white font-bold py-2 px-4 rounded hover:bg-green-700">
+        <button
+          onClick={onRegister}
+          className="bg-green-500 w-full flex justify-center items-center text-white font-bold py-2 px-4 rounded hover:bg-green-700"
+        >
           Register
         </button>
       </div>
@@ -84,7 +130,7 @@ const Register = () => {
           Login
         </button>
       </p>
-    </form>
+    </>
   );
 };
 export default Register;

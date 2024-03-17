@@ -1,7 +1,5 @@
 "use client";
 
-import PageContent from "@/app/(site)/components/PageContent";
-import { Anybody } from "next/font/google";
 import PlayButton from "@/components/PlayButton";
 import Image from "next/image";
 
@@ -11,9 +9,15 @@ interface SongItemProps {
 }
 
 const SongItem: React.FC<SongItemProps> = ({ data, onClick }) => {
+  const handleClick = () => {
+    if (onClick) {
+      return onClick();
+    }
+  };
+
   return (
     <div
-      onClick={() => console.log("test")}
+      onClick={handleClick}
       className="
         relative 
         group
@@ -40,9 +44,9 @@ const SongItem: React.FC<SongItemProps> = ({ data, onClick }) => {
         />
       </div>
       <div className="flex flex-col items-start w-full p-4 gap-y-1">
-        <p className="font-semibold truncate w-full">data title</p>
+        <p className="font-semibold truncate w-full">{data.song_name}</p>
         <p className="text-neutral-400 text-sm pb-4 w-full truncate">
-          By data Author
+          {data.artist}
         </p>
       </div>
       <div className="absolute bottom-24 right-5">

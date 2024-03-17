@@ -1,5 +1,5 @@
 import Player from "@/components/Player";
-import useAuthModal from "./UseAuthModal";
+import useAuthModal from "./useAuthModal";
 import usePlayer from "./usePlayer";
 import AuthModal from "@/components/AuthModalLogin";
 
