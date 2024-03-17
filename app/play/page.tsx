@@ -15,7 +15,7 @@ const Play = () => {
   return (
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
       <Header className="from-bg-neutral-900">
-        <div className="mb-2 flex flex-col gap-y-6"></div>
+        <div className="mb-1 flex flex-col gap-y-6"></div>
       </Header>
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-4">
         <div className="relative flex flex-col md:flex gap-y-2 gap-x-4 w-[930px] p-8">
