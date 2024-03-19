@@ -8,6 +8,10 @@ import toast from "react-hot-toast";
 import MediaItem from "./MediaItem";
 import usePlayer from "@/hooks/usePlayer";
 import { apiAddToPlaylist } from "@/services/playlist";
+import Button from "./Button";
+import { AiOutlinePlus } from "react-icons/ai";
+import Library from "./Library";
+import CreatePlaylist from "./CreatePlaylist";
 
 const AddSongToPlaylist = () => {
   const closeModal = useSongModal((state) => state.onClose);
@@ -38,7 +42,7 @@ const AddSongToPlaylist = () => {
                 <>
                   <div
                     key={item.id}
-                    className="flex flex-col gap-y-2 mt-4 px-3"
+                    className="flex flex-col gap-y-2 mt-4 px-3 hover:bg-neutral-800/50 rounded-md cursor-pointer"
                   >
                     <MediaItem onClick={() => addSong(item.id)} data={item} />
                   </div>

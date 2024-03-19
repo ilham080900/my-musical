@@ -1,4 +1,4 @@
-import { useAuthModalRegister, useAuthModalLogin } from "@/hooks/useAuthModal";
+import { useAuthModalRegister, useAuthModalLogin } from "@/hooks/UseAuthModal";
 import { apiRegister } from "@/services/auth";
 import { RegisterTypes } from "@/services/data-types";
 import { useState } from "react";

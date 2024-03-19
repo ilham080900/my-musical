@@ -2,7 +2,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useAuthModalLogin, useAuthModalRegister } from "@/hooks/useAuthModal";
+import { useAuthModalLogin, useAuthModalRegister } from "@/hooks/UseAuthModal";
 import { apiLogin } from "@/services/auth";
 import { LoginTypes, UserTypes } from "@/services/data-types";
 import { useState } from "react";

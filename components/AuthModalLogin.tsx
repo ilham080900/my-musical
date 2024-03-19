@@ -2,7 +2,7 @@
 
 import Modal from "./Modal";
 import Login from "./Login";
-import { useAuthModalLogin } from "@/hooks/useAuthModal";
+import { useAuthModalLogin } from "@/hooks/UseAuthModal";
 
 const AuthModal = () => {
   const isOpen = useAuthModalLogin((state) => state.isOpen);

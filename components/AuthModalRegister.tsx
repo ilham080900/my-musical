@@ -2,7 +2,7 @@
 
 import Modal from "./Modal";
 import Register from "./Register";
-import { useAuthModalRegister } from "@/hooks/useAuthModal";
+import { useAuthModalRegister } from "@/hooks/UseAuthModal";
 
 const AuthModal = () => {
   const isOpen = useAuthModalRegister((state) => state.isOpen);

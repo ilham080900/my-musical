@@ -8,7 +8,7 @@ import { BiSearch } from "react-icons/bi";
 import { FaUserAlt } from "react-icons/fa";
 
 import Button from "./Button";
-import { useAuthModalLogin, useAuthModalRegister } from "@/hooks/useAuthModal";
+import { useAuthModalLogin, useAuthModalRegister } from "@/hooks/UseAuthModal";
 import useAuth from "@/hooks/useAuth";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
@@ -74,9 +74,12 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
         </div>
         <div className="flex justify-between items-center gap-x-4">
           {isLogin ? (
-            <div className="flex gap-x-4 items-center">
-              <p>{user.fullname}</p>
-              <button onClick={() => router.push("/profil")}>
+            <div className="flex gap-x-6 items-center">
+              <p className="hidden md:block">{user.username}</p>
+              <button
+                className="p-2 border border-2 rounded-full"
+                onClick={() => router.push("/profil")}
+              >
                 <FaUserAlt />
               </button>
               <Button onClick={handleLogout} className="bg-white px-6 py-2">
