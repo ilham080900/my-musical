@@ -10,13 +10,7 @@ import usePlayer from "@/hooks/usePlayer";
 import { useListSong } from "@/hooks/useListSong";
 import PlayOptionSubMenu from "@/components/PlayOptionSubMenu";
 
-interface PlayProps {
-  songs: any[];
-  data: any;
-  onClick: (id: string) => void;
-}
-
-const Play: React.FC<PlayProps> = () => {
+export default function Play(){
   useListSong();
 
   const playSong = usePlayer((state) => state.song);
@@ -46,4 +40,3 @@ const Play: React.FC<PlayProps> = () => {
   );
 };
 
-export default Play;
