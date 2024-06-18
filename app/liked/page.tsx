@@ -5,7 +5,6 @@ import Image from "next/image";
 import LikedContent from "./components/LikedContent";
 import useSong from "@/hooks/useSong";
 
-export const revalidate = 0;
 
 const Liked = () => {
   const song = useSong((state) => state.song);

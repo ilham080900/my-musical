@@ -22,16 +22,16 @@ const Chord = () => {
       </Header>
       <div className="grid grid-cols-2 xl:grid-cols-1 gap-x-4">
         <div className="relative flex flex-col md:flex gap-y-2 gap-x-4 p-8">
-          <div className="lg:w-[1285px] md:w-[830px] sm:w-[600px] ">
+          <div className="lg:w-[1325px] md:w-[830px] sm:w-[768px] ">
             <PlayMenu />
           </div>
-          <div className="relative flex flex-col pt-2 pb-2 bg-neutral-800 lg:w-[1285px] md:w-[830px] sm:w-[600px] h-[auto] rounded-md">
+          <div className="relative flex flex-col pt-2 pb-2 bg-neutral-800 lg:w-[1325px] md:w-[830px] sm:w-[768px] h-[auto] rounded-md">
             <div
               dangerouslySetInnerHTML={{ __html: htmlContent }}
               className="ml-3 mr-5 mt-2 mb-3"
             />
             <div className="absolute flex flex-col justify-end items-end object-right-top p-4 pt-2 mr-1 mt-2 rtl:text-right right-[0%] top-[0%] w-[80%] hight-[25%] rounded-md">
-              <video className="w-[50%] ps-16" controls>
+              <video className="w-[50%]" controls>
                 <source
                   src={`/videos/${playSong.video_chord}`}
                   type="video/mp4"

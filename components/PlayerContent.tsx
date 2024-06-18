@@ -172,7 +172,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ songs, songUrl }) => {
           <button onClick={() => setIsOpen((prev) => !prev)}>
             {!isOpen ? (
               <IoIosArrowUp
-                onClick={() => router.push(`play?song=${playSong.id}`)}
+                onClick={() => router.push(`/play?song=${playSong.id}`)}
                 size={30}
                 className="cursor-pointer text-neutral-400 hover:text-white transition animate-rotate-180 hover:scale-110"
               />

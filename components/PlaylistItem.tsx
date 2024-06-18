@@ -75,7 +75,7 @@ const PlayListItem: React.FC<PlaylistItemProps> = ({
         </p>
         {isLogin ? (
           <p className="text-neutral-400 text-sm pb-4 w-full truncate">
-            {user.username}
+            {user.fullname}
           </p>
         ) : (
           <></>

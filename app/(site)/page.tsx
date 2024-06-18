@@ -4,15 +4,19 @@ import Header from "@/components/Header";
 import ListItem from "@/components/ListItem";
 
 import PageContent from "./components/PageContent";
+import PageContentPlaylist from "./components/PageContentPlaylist";
 import useSong from "@/hooks/useSong";
+import useRecomendation from "@/hooks/useRecomendation";
 import { useListSong } from "@/hooks/useListSong";
-
-export const revalidate = 0;
+import {useRecomendationPlaylist} from '@/hooks/useRecomendationPlaylist'
 
 export default function Home() {
   const song = useSong((state) => state.song);
+  const recomendationPlaylist = useRecomendation((state) => state.recomendation_playlist);
 
   useListSong();
+  useRecomendationPlaylist()
+  
 
   return (
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
@@ -33,6 +37,12 @@ export default function Home() {
           <h1 className="text-white text-2xl font-semibold">Newest Songs </h1>
         </div>
         <PageContent songs={song} />
+      </div>
+      <div className="mt-2 mb-7 px-6 py-6">
+        <div className="flex justify-between items-center">
+          <h1 className="text-white text-2xl font-semibold">Recommended Playlist </h1>
+        </div>
+        <PageContentPlaylist playlists={recomendationPlaylist} />
       </div>
       <br />
       <br />

@@ -35,6 +35,8 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
 
   const handleLogout = () => {
     Cookies.remove("token");
+    localStorage.removeItem("listRecomendation")
+    localStorage.removeItem("listSong")
     setLogin(false);
     router.push("/");
   };
@@ -79,7 +81,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
         <div className="flex justify-between items-center gap-x-4">
           {isLogin ? (
             <div className="flex gap-x-6 items-center overflow-auto">
-              <p className="hidden md:block">{user.username}</p>
+              <p className="hidden md:block">{user.fullname}</p>
               <>
                 <button
                   className="p-2 rounded-full bg-neutral-800 hover:opacity-75 transition"
@@ -92,7 +94,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
                 </button>
                 {isOpen ? (
                   <div
-                    className="absolute flex flex-col bg-neutral-800 text-white py-2 mx-2 my-4 w-60 rounded-md cursor-pointer transition duration-300 ease-in-out top-14 right-8"
+                    className="absolute flex flex-col bg-neutral-800 text-white py-2 mx-2 my-4 w-60 rounded-md cursor-pointer transition duration-300 ease-in-out top-14 right-10"
                     id="menu-Dropdown"
                   >
                     <button

@@ -34,3 +34,13 @@ export async function apiAddToPlaylist(data: AddToPlaylistTypes) {
     data,
   });
 }
+
+export async function getRecomendationPlaylist() {
+  const url = `${ROOT_API}/recomended-playlist`;
+
+  return callAPI({
+    url,
+    method: "GET",
+    token: true,
+  });
+}

@@ -12,7 +12,6 @@ interface SearchProps {
   };
 }
 
-export const revalidate = 0;
 
 const Search = ({ searchParams }: SearchProps) => {
   const songs = useSong((state) => state.song);

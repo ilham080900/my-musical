@@ -25,7 +25,7 @@ const TerkaitContent = () => {
       {listSong.map((song: any) => (
         <div
           key={song.id}
-          className="flex gap-x-4 w-full hover:bg-neutral-400/10 cursor-pointer rounded-md"
+          className="flex gap-x-4 w-full hover:bg-neutral-400/20 cursor-pointer rounded-md"
         >
           <MediaItem onClick={() => playSong(song)} data={song} />
         </div>

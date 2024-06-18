@@ -1,20 +1,20 @@
 "use client";
 
-import MediaItem from "@/components/MediaItem";
-import Image from "next/image";
-import LikeButton from "@/components/LikeButton";
-import useOnPlay from "@/hooks/useOnPlay";
+import React, { useEffect } from "react";
 import usePlayer from "@/hooks/usePlayer";
+import MediaItem from "@/components/MediaItem";
+import LikeButton from "@/components/LikeButton";
 import { useRouter } from "next/navigation";
-import PlayItem from "@/components/PlayItem";
-import { useEffect } from "react";
+import MediaPlaylist from "@/components/MediaPlaylist";
 
-interface PlayContentProps {
+interface PlaylistContentProps {
   songs: any[];
   isLoading: boolean;
 }
-
-const PlayContent: React.FC<PlayContentProps> = ({ songs, isLoading }) => {
+const PlaylistContent: React.FC<PlaylistContentProps> = ({
+  songs,
+  isLoading,
+}) => {
   const router = useRouter();
 
   const setSong = usePlayer((state) => state.setSong);
@@ -28,12 +28,13 @@ const PlayContent: React.FC<PlayContentProps> = ({ songs, isLoading }) => {
   if (songs.length === 0) {
     return (
       <div className="flex flex-col gap-y-2 w-full px-6 text-neutral-400">
-        No Play Songs.
+        No Playlist Songs.
       </div>
     );
   }
 
   function playSong(value: any) {
+    console.log(value);
     setSong({
       song_name: value.song_name,
       artist: value.artist,
@@ -47,22 +48,21 @@ const PlayContent: React.FC<PlayContentProps> = ({ songs, isLoading }) => {
   }
 
   return (
-    <div className="flex flex-col gap-y-2 w-[345px] h-[500px] cursor-pointer rounded-lg">
-      <div className="relative hover:bg-neutral-700/50 rounded-lg">
-        {songs.map((song) => (
+    <div key={0} className="flex flex-col gap-y-2 w-full p-6">
+      {songs.map((song) => {
+        return (
           <div key={song.id} className="flex items-center gap-x-4 w-full">
-            <div className="flex-1">
-              <PlayItem
-                key={song.id}
-                onClick={() => playSong(song)}
-                data={song}
-              />
-            </div>
+            <MediaItem
+              key={song.id}
+              onClick={() => playSong(song)}
+              data={song}
+            />
+            <LikeButton songId={song.id} />
           </div>
-        ))}
-      </div>
+        );
+      })}
     </div>
   );
 };
 
-export default PlayContent;
+export default PlaylistContent;

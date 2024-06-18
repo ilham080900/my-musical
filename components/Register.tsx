@@ -48,7 +48,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="mb-4 pb-5">
+      <div className="mb-2 pb-3">
         <label
           htmlFor="Fullname"
           className="block text-white text-md font-bold mb-2"
@@ -56,7 +56,7 @@ const Register = () => {
           Full Name
         </label>
         <input
-          className="shadow appearance-none rounded w-full py-2 px-3 text-neutral-800 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none rounded-md w-full py-2 px-3 text-white placeholder-gray-400 leading-tight focus:outline-none focus:shadow-outline bg-neutral-800"
           id="fullname"
           type="text"
           placeholder="Fullname"
@@ -65,7 +65,7 @@ const Register = () => {
           onChange={(event) => setFullname(event.target.value)}
         />
       </div>
-      <div className="mb-4 pb-5">
+      <div className="mb-2 pb-3">
         <label
           htmlFor="Username"
           className="block text-white text-md font-bold mb-2"
@@ -73,7 +73,7 @@ const Register = () => {
           Username
         </label>
         <input
-          className="shadow appearance-none rounded w-full py-2 px-3 text-neutral-800 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none rounded-md w-full py-2 px-3 text-white placeholder-gray-400 leading-tight focus:outline-none focus:shadow-outline bg-neutral-800"
           id="Username"
           type="text"
           placeholder="Username"
@@ -82,7 +82,7 @@ const Register = () => {
           onChange={(event) => setUsername(event.target.value)}
         />
       </div>
-      <div className="mb-4 pb-5">
+      <div className="mb-2 pb-3">
         <label
           htmlFor="password"
           className="block text-white text-md font-bold mb-2"
@@ -90,7 +90,7 @@ const Register = () => {
           Password
         </label>
         <input
-          className="shadow appearance-none rounded w-full py-2 px-3 text-neutral-800 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none rounded-md w-full py-2 px-3 text-white placeholder-gray-400 leading-tight focus:outline-none focus:shadow-outline bg-neutral-800"
           id="password"
           type="password"
           placeholder="*******"
@@ -99,7 +99,7 @@ const Register = () => {
           onChange={(event) => setPassword(event.target.value)}
         />
       </div>
-      <div className="mb-4 pb-5">
+      <div className="mb-2 pb-3">
         <label
           htmlFor="confirmpassword"
           className="block text-white text-md font-bold mb-2"
@@ -107,7 +107,7 @@ const Register = () => {
           Confirm Password
         </label>
         <input
-          className="shadow appearance-none rounded w-full py-2 px-3 text-neutral-800 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none rounded-md w-full py-2 px-3 text-white placeholder-gray-400 leading-tight focus:outline-none focus:shadow-outline bg-neutral-800"
           id="confirmpassword"
           type="password"
           placeholder="*******"
@@ -116,10 +116,10 @@ const Register = () => {
           onChange={(event) => setConfirmPassword(event.target.value)}
         />
       </div>
-      <div className="mb-4 pt-2">
+      <div className="mb-3 pt-3">
         <button
           onClick={onRegister}
-          className="bg-white w-full flex justify-center items-center text-neutral-800 font-bold py-2 px-4 rounded hover:bg-neutral-500"
+          className="bg-white w-full flex justify-center items-center text-neutral-800 font-bold py-2 px-4 rounded hover:opacity-75"
         >
           Register
         </button>

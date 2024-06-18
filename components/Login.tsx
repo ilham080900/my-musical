@@ -56,15 +56,15 @@ const Login = () => {
 
   return (
     <>
-      <div className="mb-4 pb-5">
+      <div className="mb-3 pb-4">
         <label
           htmlFor="Username"
-          className="block text-neutral-800 text-md font-bold mb-2"
+          className="block text-white text-md font-bold mb-2"
         >
           Username
         </label>
         <input
-          className="shadow appearance-none rounded w-full py-2 px-3 text-neutral-800 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none rounded-md w-full py-2 px-3 text-white placeholder-gray-400 leading-tight focus:outline-none focus:shadow-outline bg-neutral-800"
           id="Username"
           type="text"
           placeholder="Username"
@@ -73,15 +73,15 @@ const Login = () => {
           onChange={(event) => setUsername(event.target.value)}
         />
       </div>
-      <div className="mb-4 pb-5">
+      <div className="mb-3 pb-4">
         <label
           htmlFor="password"
-          className="block text-neutral-800 text-md font-bold mb-2"
+          className="block text-white text-md font-bold mb-2"
         >
           Password
         </label>
         <input
-          className="shadow appearance-none rounded w-full py-2 px-3 text-neutral-800 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none rounded-md w-full py-2 px-3 text-white placeholder-gray-400 leading-tight focus:outline-none focus:shadow-outline bg-neutral-800"
           id="password"
           type="password"
           placeholder="*******"
@@ -90,9 +90,9 @@ const Login = () => {
           onChange={(event) => setPassword(event.target.value)}
         />
       </div>
-      <div className="mb-4 pt-2">
+      <div className="mb-4 pt-3">
         <button
-          className="bg-white w-full flex justify-center items-center text-neutral-800 font-bold py-2 px-4 rounded hover:bg-neutral-500"
+          className="bg-white w-full flex justify-center items-center text-neutral-800 font-bold py-2 px-4 rounded hover:opacity-75"
           onClick={onLogin}
         >
           Login

@@ -3,30 +3,16 @@
 
 import Header from "@/components/Header";
 import Image from "next/image";
-import usePlaylist from "@/hooks/usePlaylist";
+import useRecomendation from "@/hooks/useRecomendation";
 import { useCallback, useEffect } from "react";
-import { apiListPlaylist } from "@/services/playlist";
 import useAuth from "@/hooks/useAuth";
 import PlaylistContent from "./components/PlaylistContent";
 
 
 const Playlist = ({ params }: { params: { slug: string } }) => {
-  const playlists = usePlaylist((state) => state.playlist);
-  const setPlaylist = usePlaylist((state) => state.setPlaylist);
-  const isLogin = useAuth((state) => state.isLogin);
+  const playlists = useRecomendation((state) => state.recomendation_playlist);
 
   const playlist = playlists.find((e: any) => e.id == params.slug);
-
-  const getPlaylist = useCallback(async () => {
-    const data = await apiListPlaylist();
-    setPlaylist(data.data);
-  }, [apiListPlaylist]);
-
-  useEffect(() => {
-    if (isLogin) {
-      getPlaylist();
-    }
-  }, [isLogin]);
 
   return (
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
@@ -37,7 +23,7 @@ const Playlist = ({ params }: { params: { slug: string } }) => {
               <div className="relative h-32 w-32 lg:h-42 lg:w-42 rounded-md">
                 <Image
                   fill
-                  src="/images/playlist lain.png"
+                  src="/images/gambar playlist.jpg"
                   alt="Playlist"
                   className="object-cover"
                 />

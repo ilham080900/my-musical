@@ -58,7 +58,7 @@ const MediaPlaylist: React.FC<MediaPlaylistProps> = ({ data, onClick }) => {
           </p>
           {isLogin ? (
             <p className="text-neutral-400 text text-sm truncate">
-              {user.username}
+              {user.fullname}
             </p>
           ) : (
             <></>

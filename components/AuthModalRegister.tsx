@@ -10,7 +10,7 @@ const AuthModal = () => {
 
   return (
     <Modal
-      title="Welcome to My Musical"
+      title=""
       description="Let's get you all set up. Create a free account to continue."
       isOpen={isOpen}
       onChange={closeModal}

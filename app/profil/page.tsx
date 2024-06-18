@@ -2,8 +2,6 @@
 
 import Header from "@/components/Header";
 import Image from "next/image";
-import ProfilContent from "./components/ProfilContent";
-import { IoIosMore } from "react-icons/io";
 import useAuth from "@/hooks/useAuth";
 import { apiListPlaylist } from "@/services/playlist";
 import { useRouter } from "next/navigation";
@@ -11,19 +9,11 @@ import { useCallback, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import Cookies from "js-cookie";
 import usePlaylist from "@/hooks/usePlaylist";
-import Playlist from "../playlist/[slug]/page";
 import { PlaylistTypes } from "@/services/data-types";
 import PlayListItem from "@/components/PlaylistItem";
-import usePlaylistModal from "@/hooks/usePlaylistModal";
-import PlaylistContent from "../playlist/[slug]/components/PlaylistContent";
-import ListItem from "@/components/ListItem";
 import LikeItem from "@/components/LikeItem";
-import { list } from "postcss";
-import { CiEdit } from "react-icons/ci";
-import { FaExpeditedssl } from "react-icons/fa";
 import useEditProfilModal from "@/hooks/useEditProfilModal";
 
-export const revalidate = 0;
 
 const Profil = () => {
   const router = useRouter();
@@ -84,7 +74,7 @@ const Profil = () => {
                 <p className="hidden md:block font-semibold text-sm">Profil</p>
                 {isLogin ? (
                   <h1 className="text-white text-sm sm:text-5xl lg:text-7xl font-bold">
-                    {user.username}
+                    {user.fullname}
                   </h1>
                 ) : (
                   <></>
@@ -122,7 +112,7 @@ const Profil = () => {
         </div>
       </Header>
       <h4 className="text-white text-2xl font-semibold px-6">Your Library</h4>
-      <div className="mt-1 mb-3 px-6 py-6">
+      <div className="mt-1 mb-3 px-6 py-8">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-8 gap-4 mt-1">
           <LikeItem
             image="/images/liked.png"
@@ -151,6 +141,7 @@ const Profil = () => {
               : ""
             : ""}
         </div>
+        <br />
         <br />
       </div>
     </div>
