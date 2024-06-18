@@ -20,7 +20,8 @@ const Video = () => {
           <div className="flex justify-center items-center overflow-y-auto pt-2 bg-neutral-800 h-[435px] rounded-md">
             <div className="relative h-[400px] w-[800px] overflow-hidden py-2 px-2">
               <video className="w-full h-full rounded-md" controls>
-                <source src={`/videos/${playSong.video}`} type="video/mp4" />
+                <source src={`/videos/the1975aboutyou.mp4`} type="video/mp4" />
+                {/* <source src={`/videos/${playSong.video}`} type="video/mp4" /> */}
                 Your browser does not support the video tag.
               </video>
             </div>

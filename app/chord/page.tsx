@@ -33,7 +33,8 @@ const Chord = () => {
             <div className="absolute flex flex-col justify-end items-end object-right-top p-4 pt-2 mr-1 mt-2 rtl:text-right right-[0%] top-[0%] w-[80%] hight-[25%] rounded-md">
               <video className="w-[50%]" controls>
                 <source
-                  src={`/videos/${playSong.video_chord}`}
+                  src={`/videos/tutorgitaraboutyou-the1975.mp4`}
+                  // src={`/videos/${playSong.video_chord}`}
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
