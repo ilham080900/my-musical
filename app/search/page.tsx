@@ -4,7 +4,6 @@ import Header from "@/components/Header";
 import SearchInput from "@/components/SearchInput";
 import SearchContent from "./components/SearchContent";
 import useSong from "@/hooks/useSong";
-import { apiSearchSong } from "@/services/song";
 
 interface SearchProps {
   searchParams: {

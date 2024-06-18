@@ -3,7 +3,6 @@
 import MediaItem from "@/components/MediaItem";
 import LikeButton from "@/components/LikeButton";
 import usePlayer from "@/hooks/usePlayer";
-import PlayButton from "@/components/PlayButton";
 
 interface SearchContentProps {
   songs: any[];

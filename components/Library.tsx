@@ -3,7 +3,6 @@
 
 import { TbPlaylist } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
-import MediaItem from "./MediaItem";
 import usePlaylistModal from "@/hooks/usePlaylistModal";
 import useAuth from "@/hooks/useAuth";
 import { useCallback, useEffect } from "react";
@@ -11,8 +10,6 @@ import { apiListPlaylist } from "@/services/playlist";
 import usePlaylist from "@/hooks/usePlaylist";
 import { PlaylistTypes } from "@/services/data-types";
 import { useRouter } from "next/navigation";
-import LikeButton from "./LikeButton";
-import usePlayer from "@/hooks/usePlayer";
 import MediaPlaylist from "./MediaPlaylist";
 
 const Library = () => {

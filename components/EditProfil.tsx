@@ -1,14 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import usePlaylist from "@/hooks/usePlaylist";
-import usePlaylistModal from "@/hooks/usePlaylistModal";
-import { CreatePlaylistTypes } from "@/services/data-types";
-import { apiCreatePlaylist } from "@/services/playlist";
 import useEditProfilModal from "@/hooks/useEditProfilModal";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
-import toast from "react-hot-toast";
 
 const EditProfil = () => {
   const [EditProfil, setEditProfil] = useState<string>("");

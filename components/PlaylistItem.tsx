@@ -3,10 +3,8 @@
 import PlayButton from "@/components/PlayButton";
 import useAuth from "@/hooks/useAuth";
 import { jwtDecode } from "jwt-decode";
-import Image from "next/image";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
 import { TbPlaylist } from "react-icons/tb";
 
 interface PlaylistItemProps {

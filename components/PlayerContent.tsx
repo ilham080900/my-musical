@@ -1,8 +1,6 @@
 "use client";
 
 import {
-  BsArrowBarDown,
-  BsArrowBarUp,
   BsPauseFill,
   BsPlayFill,
 } from "react-icons/bs";
@@ -21,8 +19,6 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import useSongModal from "@/hooks/useSongModal";
 import { useRouter } from "next/navigation";
 import useSound from "use-sound";
-import { profile } from "console";
-import { pages } from "next/dist/build/templates/app-page";
 
 interface PlayerContentProps {
   songs: any[];

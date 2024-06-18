@@ -3,9 +3,7 @@
 
 import usePlaylist from "@/hooks/usePlaylist";
 import useSongModal from "@/hooks/useSongModal";
-import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import MediaItem from "./MediaItem";
 import usePlayer from "@/hooks/usePlayer";
 import { apiAddToPlaylist } from "@/services/playlist";
 import MediaPlaylist from "./MediaPlaylist";

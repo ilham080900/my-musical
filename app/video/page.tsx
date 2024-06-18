@@ -2,9 +2,6 @@
 
 import Header from "@/components/Header";
 import PlayMenu from "@/components/PlayMenu";
-import PlayOptions from "@/components/PlayOptions";
-import TerkaitContent from "../../components/TerkaitContent";
-import LirikContent from "../../components/LirikContent";
 import usePlayer from "@/hooks/usePlayer";
 import PlayOptionSubMenu from "@/components/PlayOptionSubMenu";
 

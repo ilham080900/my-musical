@@ -35,33 +35,12 @@ const RecomendationPlaylistItem: React.FC<RecomendationPlaylistProps> = ({ data,
         transition
         p-3"
     >
-      <div className="grid grid-rows-2 grid-cols-2 relative aspect-square w-full h-full rounded-md overflow-hidden">
+      <div className="relative aspect-square w-full h-full rounded-md overflow-hidden">
         <Image
-          className="object-cover"
+          className="object-cover rounded-md"
           src="/images/gambar playlist.jpg"
-          height={70}
-          width={70}
-          alt="image"
-        />
-        <Image
-          className="object-cover"
-          src="/images/gambar playlist.jpg"
-          height={70}
-          width={70}
-          alt="image"
-        />
-        <Image
-          className="object-cover rounded-0, 100, 100, 0"
-          src="/images/gambar playlist.jpg"
-          height={70}
-          width={70}
-          alt="image"
-        />
-        <Image
-          className="object-cover rounded-0, 100, 100, 0"
-          src="/images/gambar playlist.jpg"
-          height={70}
-          width={70}
+          height={200}
+          width={200}
           alt="image"
         />
       </div>

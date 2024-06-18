@@ -5,7 +5,6 @@ import usePlayer from "@/hooks/usePlayer";
 import MediaItem from "@/components/MediaItem";
 import LikeButton from "@/components/LikeButton";
 import { useRouter } from "next/navigation";
-import MediaPlaylist from "@/components/MediaPlaylist";
 
 interface PlaylistContentProps {
   songs: any[];

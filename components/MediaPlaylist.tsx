@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect } from "react";
-import Image from "next/image";
 import { jwtDecode } from "jwt-decode";
 import useAuth from "@/hooks/useAuth";
 import Cookies from "js-cookie";

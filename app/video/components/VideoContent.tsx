@@ -1,7 +1,5 @@
 "use client";
 
-import MediaItem from "@/components/MediaItem";
-
 interface VideoContentProps {
   songs: any;
   songId: string;

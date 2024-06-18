@@ -1,9 +1,5 @@
 "use client";
 
-import MediaItem from "@/components/MediaItem";
-import Image from "next/image";
-import LikeButton from "@/components/LikeButton";
-import useOnPlay from "@/hooks/useOnPlay";
 import usePlayer from "@/hooks/usePlayer";
 import { useRouter } from "next/navigation";
 import PlayItem from "@/components/PlayItem";

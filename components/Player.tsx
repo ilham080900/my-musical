@@ -3,9 +3,6 @@
 import usePlayer from "@/hooks/usePlayer";
 import PlayerContent from "./PlayerContent";
 import SongItem from "./SongItem";
-import useGetSongById from "@/hooks/useGetSongById";
-import { Play } from "next/font/google";
-import SongModal from "./SongModal";
 import useLoadSongUrl from "@/hooks/useLoadSongUrl";
 
 const Player = () => {

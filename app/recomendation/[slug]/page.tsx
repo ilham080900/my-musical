@@ -4,8 +4,6 @@
 import Header from "@/components/Header";
 import Image from "next/image";
 import useRecomendation from "@/hooks/useRecomendation";
-import { useCallback, useEffect } from "react";
-import useAuth from "@/hooks/useAuth";
 import PlaylistContent from "./components/PlaylistContent";
 
 

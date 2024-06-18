@@ -14,8 +14,6 @@ import useAuth from "@/hooks/useAuth";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
-import { Router } from "next/router";
-import { IoIosExit } from "react-icons/io";
 
 interface HeaderProps {
   children: React.ReactNode;

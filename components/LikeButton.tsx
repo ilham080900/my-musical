@@ -1,7 +1,6 @@
 "use client";
 
 import useSong from "@/hooks/useSong";
-import { useEffect, useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 interface LikeButtonProps {

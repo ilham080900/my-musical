@@ -1,9 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
-import { IoIosMore } from "react-icons/io";
-import { list } from "postcss";
 
 export const revalidate = 0;
 

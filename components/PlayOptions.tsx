@@ -1,6 +1,4 @@
 import { useRouter } from "next/navigation";
-import { twMerge } from "tailwind-merge";
-
 const PlayOptions = () => {
   const router = useRouter();
   return (
