@@ -9,7 +9,7 @@ const PlayOptionSubMenu = () => {
     setSubMenu(value);
   }
   return (
-    <div className="relative flex flex-col md:flex gap-y-2 gap-x-9 lg:w-[435px] md:w-[300px] md:left-[200px] mr-5 ml-9 py-8 items-right right-0">
+    <div className="relative flex flex-col md:flex gap-y-2 gap-x-9 lg:w-[435px] md:w-[300px] left-[200px] mr-5 ml-9 py-8 items-right right-0">
       <div className="justify-center flex flex-row gap-y-4 py-1 px-2 items-center text-center bg-neutral-800 rounded-md">
         <button
           onClick={() => playOption("terkait")}
