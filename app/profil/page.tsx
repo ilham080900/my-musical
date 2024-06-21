@@ -62,7 +62,7 @@ const Profil = () => {
         <div className="mb-2 flex flex-col gap-y-6">
           <div className="mt-20">
             <div className="flex flex-col md:flex-row items-center gap-x-5">
-              <div className="relative h-42 w-42 lg:h-44 lg:w-44">
+              <div className="relative h-32 w-32 lg:h-44 lg:w-44">
                 <Image
                   className="object-cover rounded-md"
                   src="/images/profil.jpg"

@@ -22,10 +22,10 @@ const Chord = () => {
       </Header>
       <div className="grid grid-cols-2 xl:grid-cols-1 gap-x-4">
         <div className="relative flex flex-col md:flex gap-y-2 gap-x-4 p-8">
-          <div className="lg:w-[1325px] md:w-[830px] sm:w-[768px] ">
+          <div className="lg:w-[1325px] md:w-[830px] sm:w-[600px]">
             <PlayMenu />
           </div>
-          <div className="relative flex flex-col pt-2 pb-2 bg-neutral-800 lg:w-[1325px] md:w-[830px] sm:w-[768px] h-[auto] rounded-md">
+          <div className="relative flex flex-col pt-2 pb-2 bg-neutral-800 lg:w-[1325px] md:w-[830px] sm:w-[600px] h-[auto] rounded-md">
             <div
               dangerouslySetInnerHTML={{ __html: htmlContent }}
               className="ml-3 mr-5 mt-2 mb-3"
