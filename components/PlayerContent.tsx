@@ -118,13 +118,28 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ songs, songUrl }) => {
           )}
         </div>
       </div>
-      <div className="flex md:hidden col-auto w-full justify-end items-center">
+      <div className="flex md:hidden col-auto w-full justify-end items-center gap-x-3">
         <div
           onClick={handlePlay}
           className="h-10 w-10 flex items-center justify-center rounded-full bg-white p-1 cursor-pointer"
         >
           <Icon size={30} className="text-black" />
         </div>
+          <button onClick={() => setIsOpen((prev) => !prev)}>
+            {!isOpen ? (
+              <IoIosArrowUp
+                onClick={() => router.push(`/play?song=${playSong.id}`)}
+                size={30}
+                className="cursor-pointer text-neutral-400 hover:text-white transition animate-rotate-180 hover:scale-110"
+              />
+            ) : (
+              <IoIosArrowDown
+                onClick={() => router.replace("http://localhost:3000/")}
+                size={30}
+                className="cursor-pointer text-neutral-400 hover:text-white transition"
+              />
+            )}
+          </button>
       </div>
       <div className="hidden h-full md:flex justify-center items-center w-full max-w-[722px] gap-x-6">
         <AiFillStepBackward
