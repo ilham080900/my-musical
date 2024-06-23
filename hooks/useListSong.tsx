@@ -15,7 +15,10 @@ export const useListSong = () => {
   useEffect(() => {
     const songFromLocal = localStorage.getItem("listSong");
 
-    if (songFromLocal) {
+    if (songFromLocal &&
+      songFromLocal !== undefined &&
+      songFromLocal !== "undefined")
+    {
       const listSong = JSON.parse(songFromLocal);
       setSong(listSong);
     } else {

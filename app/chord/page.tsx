@@ -20,10 +20,10 @@ const Chord = () => {
       <Header className="bg-neutral-900">
         <div className="mb-2 flex flex-col gap-y-6"></div>
       </Header>
-      <div className="grid grid-cols-2 xl:grid-cols-1 gap-x-4 mx-auto">
-        <div className="relative flex flex-col md:flex gap-y-2 gap-x-4 p-8 lg:w-[1390px] md:w-[665px] sm:w-[630px]">
+      <div className="grid grid-cols-2 xl:grid-cols-1 gap-x-2 mx-auto">
+        <div className="relative flex flex-col md:flex gap-y-2 gap-x-4 p-8 lg:w-[1390px] md:w-[665px] sm:w-[630px] min-w-[610px]">
             <PlayMenu />
-          <div className="relative flex flex-col pt-2 pb-2 bg-neutral-800 lg:w-[1325px] md:w-[600px] sm:w-[565px] rounded-md">
+          <div className="relative flex flex-col md:flex pt-2 pb-2 bg-neutral-800 lg:w-[1325px] md:w-[600px] sm:w-[565px] rounded-md">
             <div
               dangerouslySetInnerHTML={{ __html: htmlContent }}
               className="ml-3 mr-5 mt-2 mb-3"

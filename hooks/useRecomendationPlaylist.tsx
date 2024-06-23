@@ -16,11 +16,16 @@ export const useRecomendationPlaylist = () => {
 
   useEffect(() => {
     const songFromLocal = localStorage.getItem("listRecomendation");
+    console.log(songFromLocal)
 
-    if (songFromLocal) {
+    if (songFromLocal && 
+      songFromLocal !== undefined && 
+      songFromLocal !== "undefined")
+    {
       const listRecomendation = JSON.parse(songFromLocal);
       setPlaylist(listRecomendation);
     } else {
+      console.log("tst")
       getRecomendation();
     }
   }, [getRecomendation, setPlaylist]);

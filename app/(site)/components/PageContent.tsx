@@ -18,6 +18,7 @@ const PageContent: React.FC<PageContentProps> = ({ songs }) => {
   const moreSong = songs.slice(16);
 
   if(more === false) {
+    console.log(song20)
     renderSong = song20.map((song: any) => {
       return (
         <SongItem key={song.id} onClick={() => playSong(song)} data={song} />

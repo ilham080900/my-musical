@@ -134,7 +134,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ songs, songUrl }) => {
               />
             ) : (
               <IoIosArrowDown
-                onClick={() => router.replace("http://localhost:3000/")}
+                onClick={() => router.replace("/")}
                 size={30}
                 className="cursor-pointer text-neutral-400 hover:text-white transition"
               />
@@ -189,7 +189,7 @@ const PlayerContent: React.FC<PlayerContentProps> = ({ songs, songUrl }) => {
               />
             ) : (
               <IoIosArrowDown
-                onClick={() => router.replace("http://localhost:3000/")}
+                onClick={() => router.replace("/")}
                 size={30}
                 className="cursor-pointer text-neutral-400 hover:text-white transition"
               />
